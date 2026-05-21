@@ -7,29 +7,33 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <button class="todo__theme-btn"></button>
     <header class="todo__header">
         <h1 class="todo__title">Todo</h1>
-        <button class="todo__theme-btn"></button>
     </header>
-    <main class="todo__main">
-        <div class="todo__input-wrapper">
+    <div class="todo__input-wrapper">
             <input type="text" class="todo__input" placeholder="What needs to be done?">
             <button class="todo__add-btn">Add</button>
-        </div>
-        <ul class="todo__list">
-            
-        </ul>
-        <div class="todo__footer">
-            <span class="todo__counter">0 items left</span>
+    </div>
+    <main class="todo__main">
+        <div class="todo__toolbar">
             <div class="todo__filters">
                 <button class="todo__filter todo__filter--active">All</button>
                 <button class="todo__filter">Active</button>
                 <button class="todo__filter">Completed</button>
             </div>
-            <button class="todo__clear-btn">Clear Completed</button>
+            <span class="todo__counter">0 tasks left</span>
         </div>
+        <ul class="todo__list">
+            <li class="todo__item">
+                <input type="checkbox" name="1" id="">
+                <span class="todo__item-text"></span>
+                <button class="todo__edit-btn"></button>
+                <button class="todo__delete-btn"></button>
+            </li>
+        </ul>
     </main>
-    
+    <footer class="todo__footer">© 2025</footer>
     <script src="script.js"></script>
 </body>
 </html>
