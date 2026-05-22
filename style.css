@@ -54,6 +54,7 @@ body{
     margin-bottom: 50px;
 }
 .todo__theme-btn{
+    cursor: pointer;
     position: absolute;
     top: 20px;
     right: 20px;
@@ -92,6 +93,7 @@ body{
     padding: 16px;
     text-align: center;
     box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+    cursor: pointer;
 }
 .todo__add-btn::before{
     content: '+ ';    
@@ -157,10 +159,12 @@ body{
 .todo__edit-btn{
     background: none;
     border: none;
+    cursor: pointer;
 }
 .todo__delete-btn{
     background: none;
     border: none;
+    cursor: pointer;
 }
 .todo__footer{
     margin-top: auto;    
