@@ -4,15 +4,29 @@
     text: String;
     completed: Boolean
 }
+if (localStorage.getItem('theme') === 'dark') {
+    document.body.classList.add('dark')
+}
 const inputEl = document.querySelector('.todo__input')
 const addBtn = document.querySelector('.todo__add-btn')
 const todoList = document.querySelector('.todo__list')
 const filterBtns = document.querySelectorAll('.todo__filter')
 const counterEl = document.querySelector('.todo__counter')
+const themeBtn = document.querySelector('.todo__theme-btn')
+
+themeBtn.addEventListener('click', function() {
+    document.body.classList.toggle('dark')
+    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light')
+})
 
 let currentFilter = "all"
-
 let todos = []
+const saved = localStorage.getItem('todos')
+if (saved) {
+    todos = JSON.parse(saved)
+}
+renderTodos()
+
 
 function addTodo (){
     if (inputEl.value === "")return
@@ -43,9 +57,6 @@ function renderTodos(){
         li.innerHTML = `
         <input type="checkbox">
         <span class="todo__item-text">${todo.text}</span>
-        <button class="todo__edit-btn">
-        <img src="icons/edit.svg" alt="edit task">
-        </button>
         <button class="todo__delete-btn" data-id="${todo.id}">
         <img src="icons/delete.svg" alt="delete task">
         </button>
@@ -73,6 +84,10 @@ function renderTodos(){
     const activeTodos = todos.filter(todo => !todo.completed)
     counterEl.textContent = `${activeTodos.length} tasks left`
     
+    saveTodos()
+}
+function saveTodos() {
+localStorage.setItem('todos', JSON.stringify(todos))
 
 }
 function deleteTodo(id){

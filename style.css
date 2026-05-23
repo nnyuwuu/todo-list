@@ -54,6 +54,7 @@ body{
     margin-bottom: 50px;
 }
 .todo__theme-btn{
+    z-index: 10;
     cursor: pointer;
     position: absolute;
     top: 20px;
@@ -183,3 +184,38 @@ body{
     color: var(--low-opacity-textcolor);
     font-size: var(--text--small);
 }
+body.dark {
+    --color-beige: #0f0e17;      /* фон страницы */
+    --color-light: #1a1a2e;     /* фон карточек */
+    --color-dark: #ffffff;
+    --text-color: #fffffe;
+    --low-opacity-textcolor: #a7a9be;
+}
+
+.todo__add-btn:hover {
+    opacity: 0.85;
+    cursor: pointer;
+}
+
+.todo__filter:hover {
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+.todo__edit-btn:hover,
+.todo__delete-btn:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.todo__theme-btn:hover {
+    opacity: 0.7;
+}
+
+.todo__item {
+    transition: var(--transition-duration);
+}
+
+.todo__item:hover {
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}   
