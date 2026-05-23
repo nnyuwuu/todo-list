@@ -129,6 +129,12 @@ body{
     flex-direction: column;
     gap: 30px;
 }
+.todo__empty-img {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 40px 0;
+}
 .todo__item{
     align-items: center;
     display: flex;
@@ -151,6 +157,10 @@ body{
 }
 .todo__item input[type="checkbox"]:checked{
     background: url(icons/checked.svg) center / contain no-repeat;
+}
+.todo__item--completed .todo__item-text {
+    text-decoration: line-through;
+    color: var(--low-opacity-textcolor);
 }
 .todo__item-text{
     font-size: var(--text-base);
