@@ -7,6 +7,10 @@
 const inputEl = document.querySelector('.todo__input')
 const addBtn = document.querySelector('.todo__add-btn')
 const todoList = document.querySelector('.todo__list')
+const filterBtns = document.querySelectorAll('.todo__filter')
+const counterEl = document.querySelector('.todo__counter')
+
+let currentFilter = "all"
 
 let todos = []
 
@@ -25,7 +29,14 @@ addBtn.addEventListener("click", function(){
 })
 function renderTodos(){
     todoList.innerHTML = ""
-    todos.forEach(todo =>{  
+    let filteredTodos = todos
+
+    if (currentFilter === "active") {
+        filteredTodos = todos.filter(todo => !todo.completed)
+    } else if (currentFilter === "completed") {
+        filteredTodos = todos.filter(todo => todo.completed)
+    }
+    filteredTodos.forEach(todo =>{  
         
         const li = document.createElement("li")
         li.className = "todo__item"
@@ -59,6 +70,8 @@ function renderTodos(){
             <img src="images/todo_luffy.png" alt="image for empty todo list" width="400">
         </li>`
     }
+    const activeTodos = todos.filter(todo => !todo.completed)
+    counterEl.textContent = `${activeTodos.length} tasks left`
     
 
 }
@@ -71,3 +84,12 @@ function toggleTodo(id){
     todo.completed = !todo.completed
     renderTodos()
 }
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", function(){
+        currentFilter = btn.dataset.filter
+        filterBtns.forEach(b => b.classList.remove('todo__filter--active'))
+        btn.classList.add('todo__filter--active')
+        renderTodos()
+    })
+})
